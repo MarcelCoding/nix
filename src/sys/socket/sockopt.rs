@@ -271,6 +271,14 @@ macro_rules! sockopt_impl {
  * ===== Define sockopts =====
  *
  */
+sockopt_impl! {
+    /// Configured BPF filters
+    AttachFilter,
+    Both,
+    libc::SOL_SOCKET,
+    libc::SO_ATTACH_FILTER,
+    libc::sock_fprog
+}
 
 sockopt_impl!(
     /// Enables local address reuse
@@ -1728,3 +1736,4 @@ impl<T: AsMut<[u8]>> Get<CString> for GetCString<T> {
             .to_owned()
     }
 }
+
